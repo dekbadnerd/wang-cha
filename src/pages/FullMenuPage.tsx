@@ -1,7 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
-import { X } from 'lucide-react';
-import { teaCategories } from '../data/teaMenu';
+import { X, Sparkles } from 'lucide-react';
+import { teaCategories, herbalJewels } from '../data/teaMenu';
+import type { Topping } from '../data/teaMenu';
+import { ToppingsShowcase } from '../components/ToppingsShowcase';
 
 interface Tea {
   name: string;
@@ -14,6 +16,7 @@ interface SelectedTea {
   benefit: string;
   image: string;
   category: string;
+  categoryId: string;
   price: string;
   description: string;
 }
@@ -21,6 +24,7 @@ interface SelectedTea {
 export const FullMenuPage = () => {
   const [activeCategory, setActiveCategory] = useState(teaCategories[0].id);
   const [selectedTea, setSelectedTea] = useState<SelectedTea | null>(null);
+  const [selectedTopping, setSelectedTopping] = useState<Topping | null>(null);
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
   // Intersection Observer for auto-updating active tab on scroll
@@ -45,7 +49,23 @@ export const FullMenuPage = () => {
       if (section) observer.observe(section);
     });
 
-    return () => observer.disconnect();
+    // Handle scroll to ensure last section (toppings) activates when near bottom
+    const handleScroll = () => {
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // If we're near the bottom of the page, activate toppings tab
+      if (documentHeight - scrollPosition < 100) {
+        setActiveCategory('toppings');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const scrollToCategory = (categoryId: string) => {
@@ -57,16 +77,28 @@ export const FullMenuPage = () => {
     }
   };
 
-  const openModal = (tea: Tea, categoryName: string) => {
+  const openModal = (tea: Tea, categoryName: string, categoryId: string) => {
     setSelectedTea({
       ...tea,
       category: categoryName,
+      categoryId: categoryId,
       price: '120 THB',
       description: `A carefully crafted blend that embodies the essence of ${tea.name.toLowerCase()}. 
         Brewed in our signature clay pot over charcoal fire, this tea offers a journey of flavors 
         that awakens your senses and nurtures your well-being. Each cup is a meditation, 
         a moment of tranquility in your day.`,
     });
+    setSelectedTopping(null); // Reset topping when opening new tea
+  };
+
+  const toggleTopping = (topping: Topping) => {
+    setSelectedTopping(selectedTopping?.id === topping.id ? null : topping);
+  };
+
+  const calculateTotal = () => {
+    const basePrice = 120;
+    const toppingPrice = selectedTopping ? selectedTopping.price : 0;
+    return basePrice + toppingPrice;
   };
 
   return (
@@ -101,6 +133,19 @@ export const FullMenuPage = () => {
                 {category.title}
               </button>
             ))}
+            
+            {/* Toppings Tab */}
+            <button
+              onClick={() => scrollToCategory('toppings')}
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
+                activeCategory === 'toppings'
+                  ? 'bg-leaf text-white shadow-lg scale-105'
+                  : 'bg-gray-100 text-gray-700 hover:bg-clay/30 hover:scale-105'
+              }`}
+            >
+              <span className="mr-2">✨</span>
+              Toppings
+            </button>
           </div>
         </div>
       </div>
@@ -133,7 +178,7 @@ export const FullMenuPage = () => {
               {category.teas.map((tea, index) => (
                 <motion.button
                   key={`${tea.name}-${index}`}
-                  onClick={() => openModal(tea, category.title)}
+                  onClick={() => openModal(tea, category.title, category.id)}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -160,6 +205,15 @@ export const FullMenuPage = () => {
             </div>
           </section>
         ))}
+      </div>
+
+      {/* Toppings Showcase Section */}
+      <div 
+        id="toppings"
+        ref={(el) => { sectionRefs.current['toppings'] = el; }}
+        className="scroll-mt-32"
+      >
+        <ToppingsShowcase />
       </div>
 
       {/* Tea Detail Modal */}
@@ -252,6 +306,120 @@ export const FullMenuPage = () => {
                         </li>
                       </ul>
                     </div>
+
+                    {/* Enhance Your Ritual - Toppings Section */}
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="border-t border-gray-200 pt-6"
+                      >
+                        <div className="flex items-center gap-2 mb-4">
+                          <Sparkles className="w-6 h-6 text-pollen" />
+                          <h3 className="text-xl font-serif font-bold text-gray-800">
+                            Enhance Your Ritual
+                          </h3>
+                        </div>
+                        <p className="text-gray-600 mb-6">
+                          Add a handcrafted topping to complete your experience
+                        </p>
+
+                        {/* Toppings Grid */}
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                          {herbalJewels.map((topping) => {
+                            const isPerfectMatch = topping.recommendedPairings.includes(selectedTea.categoryId);
+                            const isSelected = selectedTopping?.id === topping.id;
+
+                            return (
+                              <motion.button
+                                key={topping.id}
+                                onClick={() => toggleTopping(topping)}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className={`relative p-4 rounded-xl border-2 transition-all duration-300 text-left ${
+                                  isSelected
+                                    ? 'border-leaf bg-leaf/5 shadow-lg'
+                                    : 'border-gray-200 bg-white hover:border-clay'
+                                }`}
+                              >
+                                {/* Perfect Match Badge */}
+                                {isPerfectMatch && (
+                                  <motion.div
+                                    initial={{ scale: 0 }}
+                                    animate={{ scale: 1 }}
+                                    className="absolute -top-2 -right-2 bg-gradient-to-r from-pollen to-yellow-400 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg flex items-center gap-1"
+                                  >
+                                    <Sparkles className="w-3 h-3 animate-pulse" />
+                                    Perfect Match
+                                  </motion.div>
+                                )}
+
+                                {/* Topping Image */}
+                                <div className="aspect-square mb-3 rounded-lg overflow-hidden">
+                                  <img
+                                    src={topping.imageUrl}
+                                    alt={topping.name}
+                                    className="w-full h-full object-cover"
+                                  />
+                                </div>
+
+                                {/* Topping Info */}
+                                <div>
+                                  <p className="font-serif font-bold text-gray-800 text-sm mb-1">
+                                    {topping.name}
+                                  </p>
+                                  <p className="text-xs text-gray-500 mb-2">
+                                    {topping.chineseName} • {topping.weight}
+                                  </p>
+                                  <p className="text-leaf font-bold text-sm">
+                                    +{topping.price} THB
+                                  </p>
+                                </div>
+
+                                {/* Selected Indicator */}
+                                {isSelected && (
+                                  <motion.div
+                                    initial={{ scale: 0 }}
+                                    animate={{ scale: 1 }}
+                                    className="absolute top-3 left-3 bg-leaf text-white rounded-full p-1"
+                                  >
+                                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                    </svg>
+                                  </motion.div>
+                                )}
+                              </motion.button>
+                            );
+                          })}
+                        </div>
+
+                        {/* Total Price */}
+                        <motion.div
+                          layout
+                          className="mt-6 p-4 bg-gray-50 rounded-lg flex items-center justify-between"
+                        >
+                          <div>
+                            <p className="text-sm text-gray-600 mb-1">Total Price</p>
+                            <div className="flex items-baseline gap-2">
+                              <p className="text-3xl font-bold text-leaf">
+                                {calculateTotal()}
+                              </p>
+                              <p className="text-gray-500">THB</p>
+                            </div>
+                            {selectedTopping && (
+                              <p className="text-xs text-gray-500 mt-1">
+                                Base: 120 THB + {selectedTopping.name}: {selectedTopping.price} THB
+                              </p>
+                            )}
+                          </div>
+                          {selectedTopping && (
+                            <Sparkles className="w-8 h-8 text-pollen animate-pulse" />
+                          )}
+                        </motion.div>
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
                 </div>
               </motion.div>
