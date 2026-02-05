@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { MapPin, Clock, Phone, Copy, Check } from 'lucide-react';
+import { MapPin, Clock, Phone, Copy, Check, ExternalLink } from 'lucide-react';
 import { storeInfo } from '../data/storeInfo';
 
 export const LocationCTA = () => {
@@ -63,25 +63,27 @@ export const LocationCTA = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Map Placeholder */}
+          {/* Clickable Map */}
           <motion.div variants={itemVariants} className="order-2 md:order-1">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl h-96">
+            <a
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block relative rounded-2xl overflow-hidden shadow-2xl h-96 cursor-pointer"
+            >
               <img
                 src="https://placehold.co/800x600/8EBDC3/ffffff?text=Store+Location+Map"
-                alt="Store Location"
-                className="w-full h-full object-cover"
+                alt="Store Location - Click to open in Google Maps"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                <a
-                  href={googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white hover:bg-leaf hover:text-white text-leaf px-8 py-4 rounded-full font-medium shadow-xl transition-all duration-300 hover:scale-105"
-                >
-                  Get Directions
-                </a>
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2 shadow-lg">
+                  <MapPin className="w-5 h-5 text-leaf" />
+                  <span className="font-medium text-gray-800">Open in Maps</span>
+                  <ExternalLink className="w-4 h-4 text-gray-600" />
+                </div>
               </div>
-            </div>
+            </a>
           </motion.div>
 
           {/* Store Details */}
@@ -99,7 +101,14 @@ export const LocationCTA = () => {
                 <div className="flex-1">
                   <p className="text-sm font-medium text-gray-500 mb-1">Location</p>
                   <div className="flex items-start justify-between gap-3">
-                    <p className="text-lg text-gray-800 flex-1">{storeInfo.address}</p>
+                    <a
+                      href={googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-lg text-gray-800 flex-1 hover:text-leaf underline-offset-4 hover:underline transition-colors duration-200"
+                    >
+                      {storeInfo.address}
+                    </a>
                     <button
                       onClick={handleCopyAddress}
                       className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-leaf/10 hover:bg-leaf/20 text-leaf transition-colors duration-200 group"
