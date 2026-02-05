@@ -1,12 +1,25 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { MapPin, Clock, Phone } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { MapPin, Clock, Phone, Copy, Check } from 'lucide-react';
 import { storeInfo } from '../data/storeInfo';
 
 export const LocationCTA = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const [copied, setCopied] = useState(false);
+
+  const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${storeInfo.coordinates.lat},${storeInfo.coordinates.lng}&destination_place_id=WANGCHA`;
+
+  const handleCopyAddress = async () => {
+    try {
+      await navigator.clipboard.writeText(storeInfo.address);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy address:', err);
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -59,9 +72,14 @@ export const LocationCTA = () => {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                <button className="bg-white hover:bg-leaf hover:text-white text-leaf px-8 py-4 rounded-full font-medium shadow-xl transition-all duration-300 hover:scale-105">
+                <a
+                  href={googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white hover:bg-leaf hover:text-white text-leaf px-8 py-4 rounded-full font-medium shadow-xl transition-all duration-300 hover:scale-105"
+                >
                   Get Directions
-                </button>
+                </a>
               </div>
             </div>
           </motion.div>
@@ -78,9 +96,28 @@ export const LocationCTA = () => {
                 <div className="bg-leaf/10 p-3 rounded-full">
                   <MapPin className="w-6 h-6 text-leaf" />
                 </div>
-                <div>
+                <div className="flex-1">
                   <p className="text-sm font-medium text-gray-500 mb-1">Location</p>
-                  <p className="text-lg text-gray-800">{storeInfo.address}</p>
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="text-lg text-gray-800 flex-1">{storeInfo.address}</p>
+                    <button
+                      onClick={handleCopyAddress}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-leaf/10 hover:bg-leaf/20 text-leaf transition-colors duration-200 group"
+                      title="Copy address"
+                    >
+                      {copied ? (
+                        <>
+                          <Check className="w-4 h-4" />
+                          <span className="text-sm font-medium">Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-4 h-4" />
+                          <span className="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">Copy</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
 

@@ -2,6 +2,7 @@ import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { storeInfo } from '../data/storeInfo';
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -10,6 +11,8 @@ export const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
+
+  const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${storeInfo.coordinates.lat},${storeInfo.coordinates.lng}&destination_place_id=WANGCHA`;
 
   useEffect(() => {
     const updateScrolled = (latest: number) => {
@@ -112,10 +115,12 @@ export const Navbar = () => {
           </div>
 
           {/* Right: CTA Button - Desktop Only */}
-          <motion.button
+          <motion.a
+            href={googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => scrollToSection('location')}
             className={`hidden md:block px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
               shouldShowScrolledStyle
                 ? 'bg-leaf text-white hover:bg-leaf/90 shadow-md'
@@ -123,7 +128,7 @@ export const Navbar = () => {
             }`}
           >
             Get Directions
-          </motion.button>
+          </motion.a>
 
           {/* Mobile: Hamburger Toggle Button */}
           <button
@@ -175,16 +180,16 @@ export const Navbar = () => {
                 ))}
 
                 {/* CTA Button */}
-                <motion.button
+                <motion.a
+                  href={googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    scrollToSection('location');
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="w-full bg-leaf text-white hover:bg-leaf/90 py-3 px-6 rounded-full font-medium shadow-md transition-all duration-300 mt-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full block text-center bg-leaf text-white hover:bg-leaf/90 py-3 px-6 rounded-full font-medium shadow-md transition-all duration-300 mt-2"
                 >
                   Get Directions
-                </motion.button>
+                </motion.a>
               </div>
             </motion.div>
           )}

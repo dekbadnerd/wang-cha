@@ -23,7 +23,7 @@ export const storeInfo: StoreInfo = {
   phone: '+66 2 123 4567',
   mapUrl: 'https://maps.google.com',
   coordinates: {
-    lat: 13.7563,
-    lng: 100.5018,
+    lat: 13.7462,
+    lng: 100.5345,
   },
 };
