@@ -23,25 +23,32 @@ export const Navbar = () => {
     return () => unsubscribe();
   }, [scrollY]);
 
-  const scrollToSection = (id: string) => {
-    // If not on home page, navigate to home first
-    if (!isHomePage) {
-      navigate(`/#${id}`);
-      return;
-    }
-    
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false); // Close mobile menu when link is clicked
+  const handleNavClick = (targetPath: string, targetHash: string) => {
+    setIsMobileMenuOpen(false);
+
+    // If we're already on the target path
+    if (location.pathname === targetPath) {
+      if (targetHash) {
+        // Scroll to section
+        const element = document.getElementById(targetHash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        // No hash, scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to different path
+      navigate(targetPath + (targetHash ? `#${targetHash}` : ''));
     }
   };
 
   const navItems = [
-    { name: 'Story', id: 'story', type: 'section' },
-    { name: 'Ritual', id: 'ritual', type: 'section' },
-    { name: 'Menu', path: '/menu', type: 'route' },
-    { name: 'Location', id: 'location', type: 'section' },
+    { name: 'Story', path: '/', hash: 'story' },
+    { name: 'Ritual', path: '/experience', hash: '' },
+    { name: 'Menu', path: '/menu', hash: '' },
+    { name: 'Location', path: '/', hash: 'location' },
   ];
 
   // Force scrolled appearance on non-home pages
@@ -79,38 +86,20 @@ export const Navbar = () => {
           {/* Center: Navigation Links - Desktop Only */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              item.type === 'route' ? (
-                <Link
-                  key={item.name}
-                  to={item.path!}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`font-sans font-medium transition-all duration-300 hover:scale-105 relative group ${
-                    shouldShowScrolledStyle ? 'text-gray-700 hover:text-leaf' : 'text-white hover:text-pollen'
+              <button
+                key={item.name}
+                onClick={() => handleNavClick(item.path, item.hash)}
+                className={`font-sans font-medium transition-all duration-300 hover:scale-105 relative group ${
+                  shouldShowScrolledStyle ? 'text-gray-700 hover:text-leaf' : 'text-white hover:text-pollen'
+                }`}
+              >
+                {item.name}
+                <span
+                  className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                    shouldShowScrolledStyle ? 'bg-leaf' : 'bg-pollen'
                   }`}
-                >
-                  {item.name}
-                  <span
-                    className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
-                      shouldShowScrolledStyle ? 'bg-leaf' : 'bg-pollen'
-                    }`}
-                  />
-                </Link>
-              ) : (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.id!)}
-                  className={`font-sans font-medium transition-all duration-300 hover:scale-105 relative group ${
-                    shouldShowScrolledStyle ? 'text-gray-700 hover:text-leaf' : 'text-white hover:text-pollen'
-                  }`}
-                >
-                  {item.name}
-                  <span
-                    className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
-                      shouldShowScrolledStyle ? 'bg-leaf' : 'bg-pollen'
-                    }`}
-                  />
-                </button>
-              )
+                />
+              </button>
             ))}
           </div>
 
@@ -159,24 +148,13 @@ export const Navbar = () => {
               <div className="flex flex-col gap-4 items-center">
                 {/* Navigation Links */}
                 {navItems.map((item) => (
-                  item.type === 'route' ? (
-                    <Link
-                      key={item.name}
-                      to={item.path!}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="w-full text-center font-sans font-medium text-gray-700 hover:text-leaf py-3 px-4 rounded-lg hover:bg-leaf/10 transition-all duration-300"
-                    >
-                      {item.name}
-                    </Link>
-                  ) : (
-                    <button
-                      key={item.name}
-                      onClick={() => scrollToSection(item.id!)}
-                      className="w-full text-center font-sans font-medium text-gray-700 hover:text-leaf py-3 px-4 rounded-lg hover:bg-leaf/10 transition-all duration-300"
-                    >
-                      {item.name}
-                    </button>
-                  )
+                  <button
+                    key={item.name}
+                    onClick={() => handleNavClick(item.path, item.hash)}
+                    className="w-full text-center font-sans font-medium text-gray-700 hover:text-leaf py-3 px-4 rounded-lg hover:bg-leaf/10 transition-all duration-300"
+                  >
+                    {item.name}
+                  </button>
                 ))}
 
                 {/* CTA Button */}

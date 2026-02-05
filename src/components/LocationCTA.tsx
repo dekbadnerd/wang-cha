@@ -45,31 +45,41 @@ export const LocationCTA = () => {
   };
 
   return (
-    <section ref={ref} className="py-20 md:py-32 bg-mist">
+    <section ref={ref} className="block py-20 md:py-32 bg-mist">
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        animate={isInView ? 'visible' : 'hidden'}
-        className="container mx-auto px-6"
+        animate={isInView ? 'visible' : { opacity: 1 }}
+        className="container mx-auto px-4 md:px-6"
       >
         {/* Section Header */}
-        <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-leaf mb-4">
+        <motion.div 
+          variants={itemVariants}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          className="text-center mb-12 md:mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-leaf mb-3 md:mb-4">
             Come Sit With Us
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4">
             Experience the ritual in person. Let the clay pot tell its story.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-stretch">
           {/* Clickable Map */}
-          <motion.div variants={itemVariants} className="order-2 md:order-1">
+          <motion.div 
+            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            className="order-2 md:order-1 w-full"
+          >
             <a
               href={googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block relative rounded-2xl overflow-hidden shadow-2xl h-96 cursor-pointer"
+              className="group block relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl h-80 md:h-96 cursor-pointer w-full"
             >
               <img
                 src="https://placehold.co/800x600/8EBDC3/ffffff?text=Store+Location+Map"
@@ -87,31 +97,36 @@ export const LocationCTA = () => {
           </motion.div>
 
           {/* Store Details */}
-          <motion.div variants={itemVariants} className="order-1 md:order-2 space-y-8">
-            <div>
-              <h3 className="text-3xl font-serif font-bold text-leaf mb-6">
+          <motion.div 
+            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            className="order-1 md:order-2 w-full block"
+          >
+            <div className="space-y-6 md:space-y-8">
+              <h3 className="text-2xl md:text-3xl font-serif font-bold text-leaf mb-4 md:mb-6">
                 {storeInfo.name}
               </h3>
 
               {/* Address */}
-              <div className="flex items-start gap-4 mb-6">
-                <div className="bg-leaf/10 p-3 rounded-full">
-                  <MapPin className="w-6 h-6 text-leaf" />
+              <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                <div className="bg-leaf/10 p-2.5 md:p-3 rounded-full flex-shrink-0">
+                  <MapPin className="w-5 h-5 md:w-6 md:h-6 text-leaf" />
                 </div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-500 mb-1">Location</p>
-                  <div className="flex items-start justify-between gap-3">
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs md:text-sm font-medium text-gray-500 mb-1">Location</p>
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-3">
                     <a
                       href={googleMapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-lg text-gray-800 flex-1 hover:text-leaf underline-offset-4 hover:underline transition-colors duration-200"
+                      className="text-base md:text-lg text-gray-800 flex-1 hover:text-leaf underline-offset-4 hover:underline transition-colors duration-200 break-words"
                     >
                       {storeInfo.address}
                     </a>
                     <button
                       onClick={handleCopyAddress}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-leaf/10 hover:bg-leaf/20 text-leaf transition-colors duration-200 group"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-leaf/10 hover:bg-leaf/20 text-leaf transition-colors duration-200 group self-start flex-shrink-0"
                       title="Copy address"
                     >
                       {copied ? (
@@ -131,45 +146,45 @@ export const LocationCTA = () => {
               </div>
 
               {/* Hours */}
-              <div className="flex items-start gap-4 mb-6">
-                <div className="bg-serene/10 p-3 rounded-full">
-                  <Clock className="w-6 h-6 text-serene" />
+              <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                <div className="bg-serene/10 p-2.5 md:p-3 rounded-full flex-shrink-0">
+                  <Clock className="w-5 h-5 md:w-6 md:h-6 text-serene" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-500 mb-1">Opening Hours</p>
-                  <p className="text-lg text-gray-800">{storeInfo.openingHours.weekdays}</p>
-                  <p className="text-lg text-gray-800">{storeInfo.openingHours.weekend}</p>
+                  <p className="text-xs md:text-sm font-medium text-gray-500 mb-1">Opening Hours</p>
+                  <p className="text-base md:text-lg text-gray-800">{storeInfo.openingHours.weekdays}</p>
+                  <p className="text-base md:text-lg text-gray-800">{storeInfo.openingHours.weekend}</p>
                 </div>
               </div>
 
               {/* Phone */}
-              <div className="flex items-start gap-4 mb-8">
-                <div className="bg-pollen/10 p-3 rounded-full">
-                  <Phone className="w-6 h-6 text-pollen" />
+              <div className="flex items-start gap-3 md:gap-4 mb-6 md:mb-8">
+                <div className="bg-pollen/10 p-2.5 md:p-3 rounded-full flex-shrink-0">
+                  <Phone className="w-5 h-5 md:w-6 md:h-6 text-pollen" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-500 mb-1">Contact</p>
-                  <p className="text-lg text-gray-800">{storeInfo.phone}</p>
+                  <p className="text-xs md:text-sm font-medium text-gray-500 mb-1">Contact</p>
+                  <p className="text-base md:text-lg text-gray-800">{storeInfo.phone}</p>
                 </div>
               </div>
 
               {/* Delivery Options */}
-              <div className="pt-8 border-t border-gray-200">
-                <p className="text-lg text-gray-700 mb-2">Can't make it to the tea house?</p>
+              <div className="pt-6 md:pt-8 border-t border-gray-200">
+                <p className="text-base md:text-lg text-gray-700 mb-2">Can't make it to the tea house?</p>
                 <p className="text-sm text-gray-600 mb-4">Order directly to your door.</p>
                 
-                <div className="flex items-center gap-4">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                   {/* GrabFood */}
-                  <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-200">
-                    <div className="w-8 h-8 bg-gradient-to-br from-green-600 to-green-700 rounded-lg flex items-center justify-center">
+                  <div className="flex items-center gap-2 px-4 py-2.5 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-200">
+                    <div className="w-8 h-8 bg-gradient-to-br from-green-600 to-green-700 rounded-lg flex items-center justify-center flex-shrink-0">
                       <span className="text-white font-bold text-xs">G</span>
                     </div>
                     <span className="text-sm font-medium text-gray-700">GrabFood</span>
                   </div>
 
                   {/* LINE MAN */}
-                  <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-200">
-                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center">
+                  <div className="flex items-center gap-2 px-4 py-2.5 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-200">
+                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
                       <span className="text-white font-bold text-xs">LM</span>
                     </div>
                     <span className="text-sm font-medium text-gray-700">LINE MAN</span>

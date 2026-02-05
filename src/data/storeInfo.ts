@@ -23,7 +23,8 @@ export const storeInfo: StoreInfo = {
   phone: '+66 2 123 4567',
   mapUrl: 'https://maps.google.com',
   coordinates: {
-    lat: 13.7462,
-    lng: 100.5345,
+    // One Bangkok location
+    lat: 13.727113146625868,
+    lng: 100.54724247671565,
   },
 };

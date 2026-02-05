@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { ScrollToTop } from './components/ScrollToTop';
+import { ScrollToAnchor } from './components/ScrollToAnchor';
 import { HomePage } from './pages/HomePage';
 import { ExperiencePage } from './pages/ExperiencePage';
 import { FullMenuPage } from './pages/FullMenuPage';
@@ -9,6 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <ScrollToAnchor />
       <div className="min-h-screen">
         <Navbar />
         <Routes>
