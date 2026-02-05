@@ -13,7 +13,7 @@ export const rituals: Ritual[] = [
     title: 'Experience',
     subtitle: 'At Store',
     description: 'Freshly brewed in clay pots over charcoal fire. Watch the ritual unfold. Create trust through transparency. Feel the warmth of ancient wisdom.',
-    image: '../../public/images/section/ex-pot-section.webp',
+    image: '/images/section/ex-pot-section.webp',
     icon: '🏺',
   },
   {
@@ -21,7 +21,7 @@ export const rituals: Ritual[] = [
     title: 'Daily Drink',
     subtitle: 'To-Go',
     description: 'Same premium quality, served in a cup for your busy life. Health in motion. The ritual distilled into convenience without compromise.',
-    image: '../../public/images/section/ex-togo-section.webp',
+    image: '/images/section/ex-togo-section.webp',
     icon: '☕',
   },
   {
@@ -29,7 +29,7 @@ export const rituals: Ritual[] = [
     title: 'Hybrid',
     subtitle: 'Pour at Table',
     description: 'Order a set, pour it yourself. Blend the ritual with modern comfort. Your own ceremony, your own pace. Mindfulness meets flexibility.',
-    image: '../../public/images/section/ex-table-section.webp',
+    image: '/images/section/ex-table-section.webp',
     icon: '🫖',
   },
 ];

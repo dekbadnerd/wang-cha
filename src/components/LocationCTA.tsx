@@ -84,7 +84,7 @@ export const LocationCTA = () => {
               className="group block relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl h-80 md:h-96 cursor-pointer w-full"
             >
               <img
-                src="../../public/images/section/map.webp"
+                src="/images/section/map.webp"
                 alt="Store Location - Click to open in Google Maps"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
