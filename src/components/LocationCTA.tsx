@@ -143,13 +143,37 @@ export const LocationCTA = () => {
               </div>
 
               {/* Phone */}
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-4 mb-8">
                 <div className="bg-pollen/10 p-3 rounded-full">
                   <Phone className="w-6 h-6 text-pollen" />
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-500 mb-1">Contact</p>
                   <p className="text-lg text-gray-800">{storeInfo.phone}</p>
+                </div>
+              </div>
+
+              {/* Delivery Options */}
+              <div className="pt-8 border-t border-gray-200">
+                <p className="text-lg text-gray-700 mb-2">Can't make it to the tea house?</p>
+                <p className="text-sm text-gray-600 mb-4">Order directly to your door.</p>
+                
+                <div className="flex items-center gap-4">
+                  {/* GrabFood */}
+                  <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-200">
+                    <div className="w-8 h-8 bg-gradient-to-br from-green-600 to-green-700 rounded-lg flex items-center justify-center">
+                      <span className="text-white font-bold text-xs">G</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">GrabFood</span>
+                  </div>
+
+                  {/* LINE MAN */}
+                  <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-200">
+                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center">
+                      <span className="text-white font-bold text-xs">LM</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">LINE MAN</span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -3,6 +3,7 @@ import { BrandStory } from '../components/BrandStory';
 import { TheRitual } from '../components/TheRitual';
 import { SeasonalSpecial } from '../components/SeasonalSpecial';
 import { MenuShowcase } from '../components/MenuShowcase';
+import { HomeMerch } from '../components/HomeMerch';
 import { LocationCTA } from '../components/LocationCTA';
 import { Footer } from '../components/Footer';
 
@@ -20,6 +21,7 @@ export const HomePage = () => {
       <section id="menu">
         <MenuShowcase />
       </section>
+      <HomeMerch />
       <section id="location">
         <LocationCTA />
       </section>

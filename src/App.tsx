@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
+import { ScrollToTop } from './components/ScrollToTop';
 import { HomePage } from './pages/HomePage';
 import { ExperiencePage } from './pages/ExperiencePage';
 import { FullMenuPage } from './pages/FullMenuPage';
@@ -7,6 +8,7 @@ import { FullMenuPage } from './pages/FullMenuPage';
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="min-h-screen">
         <Navbar />
         <Routes>
