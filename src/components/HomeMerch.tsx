@@ -63,7 +63,7 @@ export const HomeMerch = () => {
           >
             <div className="relative overflow-hidden rounded-xl md:rounded-2xl shadow-xl">
               <img
-                src="https://placehold.co/600x800/BCD188/ffffff?text=Premium+Gift+Set"
+                src="../../public/images/section/home-section1.webp"
                 alt="The Emperor's Gift Set"
                 className="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -91,7 +91,7 @@ export const HomeMerch = () => {
           >
             <div className="relative overflow-hidden rounded-xl md:rounded-2xl shadow-xl">
               <img
-                src="https://placehold.co/600x800/7EAD6A/ffffff?text=Signature+Tea"
+                src="../../public/images/section/home-section2.webp"
                 alt="Signature Loose Leaf"
                 className="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
               />

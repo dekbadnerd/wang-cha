@@ -15,7 +15,7 @@ export interface StoreInfo {
 
 export const storeInfo: StoreInfo = {
   name: 'WANGCHA (王茶)',
-  address: '123 Serene Street, Heritage District, Bangkok 10200',
+  address: 'Wireless Road, Lumphini, Patumwan, Bangkok 10330 Thailand',
   openingHours: {
     weekdays: 'Mon-Fri: 10:00 AM - 8:00 PM',
     weekend: 'Sat-Sun: 9:00 AM - 9:00 PM',

@@ -174,7 +174,7 @@ export const FullMenuPage = () => {
             </div>
 
             {/* Tea Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
               {category.teas.map((tea, index) => (
                 <motion.button
                   key={`${tea.name}-${index}`}
@@ -183,22 +183,22 @@ export const FullMenuPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 text-left"
+                  whileHover={{ scale: 1.03, y: -8 }}
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 text-left"
                 >
-                  <div className="h-48 overflow-hidden">
+                  <div className="aspect-[3/4] overflow-hidden bg-gray-100">
                     <img
                       src={tea.image}
                       alt={tea.name}
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="p-4">
-                    <h3 className="text-lg font-serif font-bold text-gray-800 mb-1">
+                  <div className="p-4 md:p-5">
+                    <h3 className="text-base md:text-lg font-serif font-bold text-gray-800 mb-2">
                       {tea.name}
                     </h3>
-                    <p className="text-sm text-serene font-medium mb-2">{tea.benefit}</p>
-                    <p className="text-sm font-medium text-leaf">120 THB</p>
+                    <p className="text-sm text-serene font-medium mb-3">{tea.benefit}</p>
+                    <p className="text-sm font-bold text-leaf">120 THB</p>
                   </div>
                 </motion.button>
               ))}
@@ -236,15 +236,19 @@ export const FullMenuPage = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="bg-white rounded-3xl overflow-hidden shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto pointer-events-auto"
+                className="bg-white rounded-3xl overflow-hidden shadow-2xl max-w-4xl w-full max-h-[90vh] pointer-events-auto relative"
               >
                 {/* Close Button */}
                 <button
                   onClick={() => setSelectedTea(null)}
-                  className="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-colors shadow-lg"
+                  className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/95 text-gray-600 hover:bg-red-50 hover:text-red-500 transition-colors duration-200 shadow-md"
+                  aria-label="Close"
                 >
-                  <X className="w-6 h-6 text-gray-700" />
+                  <X className="w-5 h-5" />
                 </button>
+
+                {/* Scrollable Content */}
+                <div className="overflow-y-auto max-h-[90vh]">
 
                 {/* Image */}
                 <div className="h-64 md:h-96 overflow-hidden relative">
@@ -421,6 +425,7 @@ export const FullMenuPage = () => {
                       </motion.div>
                     </AnimatePresence>
                   </div>
+                </div>
                 </div>
               </motion.div>
             </div>

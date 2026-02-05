@@ -96,29 +96,30 @@ export const MenuShowcase = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8"
         >
           {currentCategory.teas.map((tea, index) => (
             <motion.div
               key={`${tea.name}-${index}`}
               variants={itemVariants}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300"
+              whileHover={{ scale: 1.03, y: -8 }}
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
             >
-              <div className="h-48 overflow-hidden">
+              <div className="aspect-[3/4] overflow-hidden bg-gray-100">
                 <img
                   src={tea.image}
                   alt={tea.name}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-4">
-                <h4 className="text-lg font-serif font-bold text-gray-800 mb-1">
+              <div className="p-4 md:p-5">
+                <h4 className="text-base md:text-lg font-serif font-bold text-gray-800 mb-2">
                   {tea.name}
                 </h4>
-                <p className="text-sm text-serene font-medium">
+                <p className="text-sm text-serene font-medium mb-3">
                   {tea.benefit}
                 </p>
+                <p className="text-sm font-bold text-leaf">120 THB</p>
               </div>
             </motion.div>
           ))}

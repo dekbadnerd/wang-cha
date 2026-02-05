@@ -53,18 +53,18 @@ export const TheRitual = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid md:grid-cols-3 gap-8"
+          className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto"
         >
           {rituals.map((ritual) => (
             <motion.div
               key={ritual.id}
               variants={cardVariants}
-              whileHover={{ scale: 1.03, y: -5 }}
+              whileHover={{ scale: 1.03, y: -8 }}
               transition={{ duration: 0.3 }}
-              className="bg-mist rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl"
+              className="bg-mist rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transform-gpu"
             >
               {/* Image */}
-              <div className="h-64 overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={ritual.image}
                   alt={ritual.title}
@@ -73,15 +73,15 @@ export const TheRitual = () => {
               </div>
 
               {/* Content */}
-              <div className="p-8">
-                <div className="text-5xl mb-4">{ritual.icon}</div>
-                <h3 className="text-2xl font-serif font-bold text-leaf mb-2">
+              <div className="p-6 lg:p-8">
+                <div className="text-4xl lg:text-5xl mb-3">{ritual.icon}</div>
+                <h3 className="text-xl lg:text-2xl font-serif font-bold text-leaf mb-2">
                   {ritual.title}
                 </h3>
-                <p className="text-sm font-medium text-serene uppercase tracking-wider mb-4">
+                <p className="text-xs lg:text-sm font-semibold text-serene uppercase tracking-wider mb-3 lg:mb-4">
                   {ritual.subtitle}
                 </p>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-sm lg:text-base text-gray-700 leading-relaxed">
                   {ritual.description}
                 </p>
               </div>

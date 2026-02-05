@@ -20,7 +20,7 @@ export const Hero = () => {
         className="absolute inset-0 z-0"
       >
         <img
-          src="https://placehold.co/1920x1080/7EAD6A/ffffff?text=Ancient+Tea+Ceremony"
+          src="../../public/images/section/hero-section.webp"
           alt="Clay Pot Tea Brewing"
           className="w-full h-full object-cover"
         />

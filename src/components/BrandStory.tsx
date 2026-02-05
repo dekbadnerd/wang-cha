@@ -41,7 +41,7 @@ export const BrandStory = () => {
           {/* Image */}
           <motion.div variants={itemVariants} className="order-2 md:order-1">
             <img
-              src="https://placehold.co/800x600/BCD188/ffffff?text=Clay+Pot+Close+Up"
+              src="../../public/images/section/ritual-section.webp"
               alt="Ancient Clay Pot"
               className="rounded-2xl shadow-2xl w-full"
             />

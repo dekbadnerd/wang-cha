@@ -13,8 +13,7 @@ export const ToppingsShowcase = () => {
   const categories = [
     { id: 'Herbal', title: 'Chinese Herbal Jelly', icon: '🌿' },
     { id: 'Fruit', title: 'Fruit Jelly', icon: '🍊' },
-    { id: 'Flower', title: 'Chinese Floral Jelly', icon: '🌸' },
-    { id: 'Special', title: 'Konjac & Special', icon: '✨' }
+    { id: 'Flower', title: 'Chinese Floral Jelly', icon: '🌸' }
   ];
 
   const getToppingsByCategory = (categoryId: string) => {
@@ -69,7 +68,7 @@ export const ToppingsShowcase = () => {
               </motion.div>
 
               {/* Toppings Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
                 {toppings.map((topping, index) => (
                   <motion.button
                     key={topping.id}
@@ -77,54 +76,54 @@ export const ToppingsShowcase = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: (categoryIndex * 0.2) + (index * 0.1) }}
-                    className="group bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden text-left cursor-pointer w-full"
+                    className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden text-left cursor-pointer w-full"
                   >
                     {/* Image */}
-                    <div className="relative h-40 md:h-48 overflow-hidden">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                       <img
                         src={topping.imageUrl}
                         alt={topping.name}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       
                       {/* Weight Badge */}
-                      <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium text-leaf">
+                      <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-leaf shadow-sm">
                         {topping.weight}
                       </div>
                     </div>
 
                     {/* Content */}
-                    <div className="p-3 md:p-4 space-y-2">
+                    <div className="p-4 md:p-5">
                       {/* Name */}
-                      <div>
-                        <h4 className="text-sm md:text-base lg:text-lg font-serif font-bold text-leaf mb-1 line-clamp-1">
+                      <div className="mb-3">
+                        <h4 className="text-base md:text-lg font-serif font-bold text-leaf mb-1.5 line-clamp-1">
                           {topping.name}
                         </h4>
-                        <p className="text-xs text-gray-500 font-medium">
+                        <p className="text-xs md:text-sm text-gray-500 font-medium">
                           {topping.chineseName}
                         </p>
                       </div>
 
                       {/* Description */}
-                      <p className="text-xs md:text-sm text-gray-600 leading-relaxed line-clamp-2">
+                      <p className="text-xs md:text-sm text-gray-600 leading-relaxed line-clamp-2 mb-3">
                         {topping.description}
                       </p>
 
                       {/* Price & Pairing Info */}
-                      <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-                        <div className="flex items-center gap-1">
-                          <span className="text-lg md:text-xl font-bold text-leaf">
+                      <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                        <div className="flex items-baseline gap-1">
+                          <span className="text-xl md:text-2xl font-bold text-leaf">
                             {topping.price}
                           </span>
                           <span className="text-xs text-gray-500">THB</span>
                         </div>
                         
                         {/* Pairing Hint */}
-                        <div className="flex items-center gap-1 text-xs text-serene">
-                          <Sparkles className="w-3 h-3" />
+                        <div className="flex items-center gap-1.5 text-xs text-serene">
+                          <Sparkles className="w-3.5 h-3.5" />
                           <span className="font-medium hidden sm:inline">
-                            {topping.recommendedPairings.length} Pairings
+                            {topping.recommendedPairings.length} Pairs
                           </span>
                         </div>
                       </div>

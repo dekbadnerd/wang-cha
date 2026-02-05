@@ -1,4 +1,7 @@
 import { motion } from 'framer-motion';
+import facebookIcon from '../assets/facebook-icon.svg';
+import lineIcon from '../assets/line-icon.svg';
+import instragramIcon from '../assets/instagram-icon.svg';
 
 export const Footer = () => {
   return (
@@ -18,7 +21,7 @@ export const Footer = () => {
             </p>
           </motion.div>
 
-          {/* Social Links Placeholder */}
+          {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -31,21 +34,21 @@ export const Footer = () => {
               className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors duration-300"
               aria-label="Facebook"
             >
-              <span className="text-xl">f</span>
+              <img src={facebookIcon} alt="Facebook" className="w-5 h-5" />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/wangchaofficial_/"
               className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors duration-300"
               aria-label="Instagram"
             >
-              <span className="text-xl">📷</span>
+              <img src={instragramIcon} alt="Instagram" className="w-5 h-5" />
             </a>
             <a
               href="#"
               className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors duration-300"
               aria-label="Line"
             >
-              <span className="text-xl">💬</span>
+              <img src={lineIcon} alt="Line" className="w-5 h-5" />
             </a>
           </motion.div>
 

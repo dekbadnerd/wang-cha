@@ -3,6 +3,8 @@ import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { MapPin, Clock, Phone, Copy, Check, ExternalLink } from 'lucide-react';
 import { storeInfo } from '../data/storeInfo';
+import grabIcon from '../assets/grab-icon.svg';
+import lineManIcon from '../assets/lineman-icon.svg';
 
 export const LocationCTA = () => {
   const ref = useRef(null);
@@ -82,7 +84,7 @@ export const LocationCTA = () => {
               className="group block relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl h-80 md:h-96 cursor-pointer w-full"
             >
               <img
-                src="https://placehold.co/800x600/8EBDC3/ffffff?text=Store+Location+Map"
+                src="../../public/images/section/map.webp"
                 alt="Store Location - Click to open in Google Maps"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -170,25 +172,37 @@ export const LocationCTA = () => {
 
               {/* Delivery Options */}
               <div className="pt-6 md:pt-8 border-t border-gray-200">
-                <p className="text-base md:text-lg text-gray-700 mb-2">Can't make it to the tea house?</p>
-                <p className="text-sm text-gray-600 mb-4">Order directly to your door.</p>
+                <p className="text-base md:text-lg font-semibold text-gray-800 mb-2">Can't make it to the tea house?</p>
+                <p className="text-sm text-gray-600 mb-5">Order directly to your door.</p>
                 
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                   {/* GrabFood */}
-                  <div className="flex items-center gap-2 px-4 py-2.5 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-200">
-                    <div className="w-8 h-8 bg-gradient-to-br from-green-600 to-green-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-xs">G</span>
+                  <a
+                    href="https://www.grab.com/th/en/food/"
+                    className="group flex items-center gap-3 px-5 py-3.5 bg-white border-2 border-gray-200 rounded-xl hover:border-green-600 hover:shadow-md transition-all duration-300 flex-1"
+                  >
+                    <div className="w-10 h-10 bg-gradient-to-br from-white-600 to-white-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                      <img src={grabIcon} alt="GrabFood" className="w-8 h-8" />
                     </div>
-                    <span className="text-sm font-medium text-gray-700">GrabFood</span>
-                  </div>
+                    <div className="flex-1">
+                      <span className="block text-sm font-bold text-gray-800 group-hover:text-green-700 transition-colors">GrabFood</span>
+                      <span className="block text-xs text-gray-500">Fast delivery</span>
+                    </div>
+                  </a>
 
                   {/* LINE MAN */}
-                  <div className="flex items-center gap-2 px-4 py-2.5 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-200">
-                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-xs">LM</span>
+                  <a
+                    href="https://lineman.line.me/"
+                    className="group flex items-center gap-3 px-5 py-3.5 bg-white border-2 border-gray-200 rounded-xl hover:border-green-500 hover:shadow-md transition-all duration-300 flex-1"
+                  >
+                    <div className="w-10 h-10 bg-gradient-to-br from-white-500 to-white-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                      <img src={lineManIcon} alt="LINE MAN" className="w-20 h-20" />
                     </div>
-                    <span className="text-sm font-medium text-gray-700">LINE MAN</span>
-                  </div>
+                    <div className="flex-1">
+                      <span className="block text-sm font-bold text-gray-800 group-hover:text-green-600 transition-colors">LINE MAN</span>
+                      <span className="block text-xs text-gray-500">Quick & easy</span>
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>

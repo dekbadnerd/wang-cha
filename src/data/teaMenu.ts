@@ -31,11 +31,11 @@ export const teaCategories: TeaCategory[] = [
     subtitle: 'Nature\'s Remedy',
     icon: '🌿',
     teas: [
-      { name: 'Pandan', benefit: 'Relax', image: 'https://placehold.co/400x300/7EAD6A/ffffff?text=Pandan+Tea' },
-      { name: 'Lemongrass', benefit: 'Digestion', image: 'https://placehold.co/400x300/BCD188/ffffff?text=Lemongrass' },
-      { name: 'Mint', benefit: 'Fresh', image: 'https://placehold.co/400x300/7EAD6A/ffffff?text=Mint+Tea' },
-      { name: 'Mulberry', benefit: 'Sugar Control', image: 'https://placehold.co/400x300/BCD188/ffffff?text=Mulberry' },
-      { name: 'Holy Basil', benefit: 'Immunity', image: 'https://placehold.co/400x300/7EAD6A/ffffff?text=Holy+Basil' },
+      { name: 'Pandan', benefit: 'Relax', image: '/images/menu/herb-baitoey.webp' },
+      { name: 'Lemongrass', benefit: 'Digestion', image: '/images/menu/herb-lemongrass.webp' },
+      { name: 'Mint', benefit: 'Fresh', image: '/images/menu/herb-mint.webp' },
+      { name: 'Mulberry', benefit: 'Sugar Control', image: '/images/menu/herb-baimon.webp' },
+      { name: 'Holy Basil', benefit: 'Immunity', image: '/images/menu/herb-basil.webp' },
     ],
   },
   {
@@ -44,10 +44,10 @@ export const teaCategories: TeaCategory[] = [
     subtitle: 'Aesthetic Wellness',
     icon: '🌸',
     teas: [
-      { name: 'Chamomile', benefit: 'Sleep', image: 'https://placehold.co/400x300/E6DC6B/ffffff?text=Chamomile' },
-      { name: 'Butterfly Pea', benefit: 'Eye Care', image: 'https://placehold.co/400x300/8EBDC3/ffffff?text=Butterfly+Pea' },
-      { name: 'Rose', benefit: 'Skin', image: 'https://placehold.co/400x300/E6DC6B/ffffff?text=Rose+Tea' },
-      { name: 'Chrysanthemum', benefit: 'Cooling', image: 'https://placehold.co/400x300/8EBDC3/ffffff?text=Chrysanthemum' },
+      { name: 'Chamomile', benefit: 'Sleep', image: '/images/menu/flower-chamomile.webp' },
+      { name: 'Butterfly Pea', benefit: 'Eye Care', image: '/images/menu/flower-butterfly.webp' },
+      { name: 'Rose', benefit: 'Skin', image: '/images/menu/flower-rose.webp' },
+      { name: 'Chrysanthemum', benefit: 'Cooling', image: '/images/menu/flower-chrysanthemum.webp' },
     ],
   },
   {
@@ -56,10 +56,10 @@ export const teaCategories: TeaCategory[] = [
     subtitle: 'Refreshing Vitality',
     icon: '🍊',
     teas: [
-      { name: 'Dried Lime', benefit: 'Vitamin C', image: 'https://placehold.co/400x300/E6DC6B/ffffff?text=Dried+Lime' },
-      { name: 'Orange Peel', benefit: 'Digestion', image: 'https://placehold.co/400x300/E6DC6B/ffffff?text=Orange+Peel' },
-      { name: 'Roselle', benefit: 'Blood Pressure', image: 'https://placehold.co/400x300/8EBDC3/ffffff?text=Roselle' },
-      { name: 'Dried Apple', benefit: 'Aroma', image: 'https://placehold.co/400x300/E6DC6B/ffffff?text=Dried+Apple' },
+      { name: 'Dried Lime', benefit: 'Vitamin C', image: '/images/menu/fruit-lime.webp' },
+      { name: 'Orange Peel', benefit: 'Digestion', image: '/images/menu/fruit-orange.webp' },
+      { name: 'Roselle', benefit: 'Blood Pressure', image: '/images/menu/fruit-roselle.webp' },
+      { name: 'Dried Apple', benefit: 'Aroma', image: '/images/menu/fruit-apple.webp' },
     ],
   },
   {
@@ -68,10 +68,10 @@ export const teaCategories: TeaCategory[] = [
     subtitle: 'Deep Healing',
     icon: '🌰',
     teas: [
-      { name: 'Turmeric', benefit: 'Anti-inflammation', image: 'https://placehold.co/400x300/E6DC6B/ffffff?text=Turmeric' },
-      { name: 'Cardamom', benefit: 'Warmth', image: 'https://placehold.co/400x300/BCD188/ffffff?text=Cardamom' },
-      { name: 'Cinnamon', benefit: 'Warmth', image: 'https://placehold.co/400x300/BCD188/ffffff?text=Cinnamon' },
-      { name: 'Licorice', benefit: 'Soothing', image: 'https://placehold.co/400x300/7EAD6A/ffffff?text=Licorice' },
+      { name: 'Turmeric', benefit: 'Anti-inflammation', image: '/images/menu/snr-kamin.webp' },
+      { name: 'Cardamom', benefit: 'Warmth', image: '/images/menu/snr-krawan.webp' },
+      { name: 'Cinnamon', benefit: 'Warmth', image: '/images/menu/snr-chaem.webp' },
+      { name: 'Licorice', benefit: 'Soothing', image: '/images/menu/snr-chaem.webp' },
     ],
   },
   {
@@ -80,10 +80,10 @@ export const teaCategories: TeaCategory[] = [
     subtitle: 'Camellia Sinensis',
     icon: '🍵',
     teas: [
-      { name: 'Black Tea', benefit: 'Energy', image: 'https://placehold.co/400x300/BCD188/ffffff?text=Black+Tea' },
-      { name: 'Oolong', benefit: 'Focus', image: 'https://placehold.co/400x300/7EAD6A/ffffff?text=Oolong' },
-      { name: 'White Tea', benefit: 'Antioxidant', image: 'https://placehold.co/400x300/DEE6DF/333333?text=White+Tea' },
-      { name: 'Pu-erh', benefit: 'Metabolism', image: 'https://placehold.co/400x300/BCD188/ffffff?text=Pu-erh' },
+      { name: 'Black Tea', benefit: 'Energy', image: '/images/menu/tea-black.webp' },
+      { name: 'Oolong', benefit: 'Focus', image: '/images/menu/tea-oolong.webp' },
+      { name: 'White Tea', benefit: 'Antioxidant', image: '/images/menu/tea-white.webp' },
+      { name: 'Pu-erh', benefit: 'Metabolism', image: '/images/menu/tea-dark.webp' },
     ],
   },
 ];
@@ -98,7 +98,7 @@ export const herbalJewels: Topping[] = [
     weight: '40g', 
     description: 'Natural sweetness, soft texture. High in antioxidants.', 
     category: 'Herbal', 
-    imageUrl: 'https://placehold.co/200x200/8EBDC3/ffffff?text=Goji',
+    imageUrl: '/images/topping/jelly-goji.webp',
     recommendedPairings: ['herbal', 'pure']
   },
   { 
@@ -109,7 +109,7 @@ export const herbalJewels: Topping[] = [
     weight: '40g', 
     description: 'Aromatic and warming. Ancient recipe.', 
     category: 'Herbal', 
-    imageUrl: 'https://placehold.co/200x200/BCD188/ffffff?text=Longan',
+    imageUrl: '/images/topping/jelly-longan.webp',
     recommendedPairings: ['pure', 'root']
   },
   { 
@@ -120,7 +120,7 @@ export const herbalJewels: Topping[] = [
     weight: '40g', 
     description: 'Deep sweetness, round taste. Classic Chinese flavor.', 
     category: 'Herbal', 
-    imageUrl: 'https://placehold.co/200x200/BCD188/ffffff?text=Red+Date',
+    imageUrl: '/images/topping/jelly-jujube.webp',
     recommendedPairings: ['herbal', 'root']
   },
   { 
@@ -131,7 +131,7 @@ export const herbalJewels: Topping[] = [
     weight: '40g', 
     description: 'Fresh, light, cooling. Pairs well with Oolong.', 
     category: 'Herbal', 
-    imageUrl: 'https://placehold.co/200x200/E6DC6B/ffffff?text=Chrysanthemum',
+    imageUrl: '/images/topping/jelly-chrysanthemum.webp',
     recommendedPairings: ['pure', 'flower']
   },
   { 
@@ -142,7 +142,7 @@ export const herbalJewels: Topping[] = [
     weight: '50g', 
     description: 'Deep complex aroma. Signature citrus peel flavor.', 
     category: 'Herbal', 
-    imageUrl: 'https://placehold.co/200x200/BCD188/ffffff?text=Tangerine',
+    imageUrl: '/images/topping/jelly-tangerine.webp',
     recommendedPairings: ['herbal', 'fruit']
   },
 
@@ -155,7 +155,7 @@ export const herbalJewels: Topping[] = [
     weight: '40g', 
     description: 'Sweet and sour. Excellent for cutting richness.', 
     category: 'Fruit', 
-    imageUrl: 'https://placehold.co/200x200/E6DC6B/ffffff?text=Hawthorn',
+    imageUrl: '/images/topping/jelly-hawthorn.webp',
     recommendedPairings: ['fruit', 'flower']
   },
   { 
@@ -166,7 +166,7 @@ export const herbalJewels: Topping[] = [
     weight: '40g', 
     description: 'Fresh and bright. Pairs with light teas.', 
     category: 'Fruit', 
-    imageUrl: 'https://placehold.co/200x200/8EBDC3/ffffff?text=Pear',
+    imageUrl: '/images/topping/jelly-pear.webp',
     recommendedPairings: ['fruit', 'pure']
   },
   { 
@@ -177,7 +177,7 @@ export const herbalJewels: Topping[] = [
     weight: '40g', 
     description: 'Zesty sour-sweet profile with aromatic peel.', 
     category: 'Fruit', 
-    imageUrl: 'https://placehold.co/200x200/E6DC6B/ffffff?text=Kumquat',
+    imageUrl: '/images/topping/jelly-kumquat.webp',
     recommendedPairings: ['fruit', 'flower']
   },
   { 
@@ -188,110 +188,7 @@ export const herbalJewels: Topping[] = [
     weight: '40g', 
     description: 'Subtle bitterness, premium citrus vibe.', 
     category: 'Fruit', 
-    imageUrl: 'https://placehold.co/200x200/8EBDC3/ffffff?text=Pomelo',
+    imageUrl: '/images/topping/jelly-pomelo.webp',
     recommendedPairings: ['fruit', 'pure']
-  },
-  { 
-    id: 'lycium-longan', 
-    name: 'Lycium & Longan Mixed Jelly', 
-    chineseName: '枸杞桂圆冻', 
-    price: 25, 
-    weight: '40g', 
-    description: 'Balanced sweetness and aroma.', 
-    category: 'Fruit', 
-    imageUrl: 'https://placehold.co/200x200/BCD188/ffffff?text=Lycium+Longan',
-    recommendedPairings: ['herbal', 'fruit']
-  },
-
-  // --- Chinese Floral Jelly (Flower) ---
-  { 
-    id: 'osmanthus', 
-    name: 'Osmanthus Jelly', 
-    chineseName: '桂花冻', 
-    price: 30, 
-    weight: '35g', 
-    description: 'Extremely aromatic. Premium choice.', 
-    category: 'Flower', 
-    imageUrl: 'https://placehold.co/200x200/E6DC6B/ffffff?text=Osmanthus',
-    recommendedPairings: ['flower', 'pure']
-  },
-  { 
-    id: 'rose', 
-    name: 'Rose Jelly', 
-    chineseName: '玫瑰花冻', 
-    price: 30, 
-    weight: '35g', 
-    description: 'Soft luxurious scent. Beauty and relaxation.', 
-    category: 'Flower', 
-    imageUrl: 'https://placehold.co/200x200/8EBDC3/ffffff?text=Rose',
-    recommendedPairings: ['flower', 'fruit']
-  },
-  { 
-    id: 'jasmine', 
-    name: 'Jasmine Jelly', 
-    chineseName: '茉莉花冻', 
-    price: 30, 
-    weight: '35g', 
-    description: 'Classic fragrance. Perfect match for Green Tea.', 
-    category: 'Flower', 
-    imageUrl: 'https://placehold.co/200x200/E6DC6B/ffffff?text=Jasmine',
-    recommendedPairings: ['pure', 'flower']
-  },
-
-  // --- Konjac & Special (Special) ---
-  { 
-    id: 'herbal-konjac', 
-    name: 'Herbal Konjac Crystal', 
-    chineseName: '草本水晶药蒟', 
-    price: 30, 
-    weight: '50g', 
-    description: 'Clear, light, chewy. Infused with herbs.', 
-    category: 'Special', 
-    imageUrl: 'https://placehold.co/200x200/8EBDC3/ffffff?text=Konjac',
-    recommendedPairings: ['herbal', 'fruit']
-  },
-  { 
-    id: 'osmanthus-konjac', 
-    name: 'Osmanthus Konjac', 
-    chineseName: '桂花蒟蒻', 
-    price: 30, 
-    weight: '50g', 
-    description: 'Sweet and aromatic konjac.', 
-    category: 'Special', 
-    imageUrl: 'https://placehold.co/200x200/E6DC6B/ffffff?text=Osmanthus+K',
-    recommendedPairings: ['flower', 'herbal']
-  },
-  { 
-    id: 'puerh-jelly', 
-    name: 'Pu-erh Infused Jelly', 
-    chineseName: '普洱茶冻', 
-    price: 35, 
-    weight: '40g', 
-    description: 'Deep, calm, sophisticated tea culture flavor.', 
-    category: 'Special', 
-    imageUrl: 'https://placehold.co/200x200/BCD188/ffffff?text=Puerh',
-    recommendedPairings: ['pure', 'root']
-  },
-  { 
-    id: 'jujube-ginger', 
-    name: 'Jujube & Ginger Jelly', 
-    chineseName: '红枣姜冻', 
-    price: 30, 
-    weight: '40g', 
-    description: 'Warming and classic combination.', 
-    category: 'Special', 
-    imageUrl: 'https://placehold.co/200x200/BCD188/ffffff?text=Jujube+Ginger',
-    recommendedPairings: ['herbal', 'root']
-  },
-  { 
-    id: 'seasonal', 
-    name: 'Seasonal Herbal Jelly', 
-    chineseName: '时令中草本冻', 
-    price: 40, 
-    weight: 'Varies', 
-    description: 'Limited seasonal menu.', 
-    category: 'Special', 
-    imageUrl: 'https://placehold.co/200x200/E6DC6B/ffffff?text=Seasonal',
-    recommendedPairings: ['herbal', 'flower', 'fruit']
   }
 ];
