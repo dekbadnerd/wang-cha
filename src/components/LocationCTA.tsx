@@ -175,32 +175,36 @@ export const LocationCTA = () => {
                 <p className="text-base md:text-lg font-semibold text-gray-800 mb-2">Can't make it to the tea house?</p>
                 <p className="text-sm text-gray-600 mb-5">Order directly to your door.</p>
                 
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-lg">
                   {/* GrabFood */}
                   <a
                     href="https://www.grab.com/th/en/food/"
-                    className="group flex items-center gap-3 px-5 py-3.5 bg-white border-2 border-gray-200 rounded-xl hover:border-green-600 hover:shadow-md transition-all duration-300 flex-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-all duration-200 h-full group"
                   >
-                    <div className="w-10 h-10 bg-gradient-to-br from-white-600 to-white-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
-                      <img src={grabIcon} alt="GrabFood" className="w-8 h-8" />
+                    <div className="w-10 h-10 flex-shrink-0 mr-3 bg-green-50 rounded-full flex items-center justify-center">
+                      <img src={grabIcon} alt="GrabFood" className="w-6 h-6" />
                     </div>
-                    <div className="flex-1">
-                      <span className="block text-sm font-bold text-gray-800 group-hover:text-green-700 transition-colors">GrabFood</span>
-                      <span className="block text-xs text-gray-500">Fast delivery</span>
+                    <div className="flex flex-col items-start">
+                      <span className="font-bold text-gray-800 text-base leading-tight">GrabFood</span>
+                      <span className="text-xs text-gray-500 font-medium">Fast delivery</span>
                     </div>
                   </a>
 
                   {/* LINE MAN */}
                   <a
                     href="https://lineman.line.me/"
-                    className="group flex items-center gap-3 px-5 py-3.5 bg-white border-2 border-gray-200 rounded-xl hover:border-green-500 hover:shadow-md transition-all duration-300 flex-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-all duration-200 h-full group"
                   >
-                    <div className="w-10 h-10 bg-gradient-to-br from-white-500 to-white-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                    <div className="w-10 h-10 flex-shrink-0 mr-3 bg-green-50 rounded-full flex items-center justify-center">
                       <img src={lineManIcon} alt="LINE MAN" className="w-20 h-20" />
                     </div>
-                    <div className="flex-1">
-                      <span className="block text-sm font-bold text-gray-800 group-hover:text-green-600 transition-colors">LINE MAN</span>
-                      <span className="block text-xs text-gray-500">Quick & easy</span>
+                    <div className="flex flex-col items-start">
+                      <span className="font-bold text-gray-800 text-base leading-tight">LINE MAN</span>
+                      <span className="text-xs text-gray-500 font-medium">Quick & easy</span>
                     </div>
                   </a>
                 </div>

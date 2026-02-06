@@ -82,22 +82,18 @@ export const ExperiencePage = () => {
         {/* Right: Video */}
         <div className="w-full md:w-1/2 h-[50vh] md:h-screen md:sticky md:top-0">
           <div className="relative w-full h-full overflow-hidden">
-            {/* Video Placeholder - Replace src with actual video URL */}
             <video
               autoPlay
               loop
               muted
               playsInline
               className="w-full h-full object-cover"
-              poster="https://placehold.co/1080x1920/7EAD6A/ffffff?text=Clay+Pot+Brewing"
+              poster="/images/pages/ritual-poster.webp"
             >
-              <source
-                src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-                type="video/mp4"
-              />
-              {/* Fallback for browsers that don't support video */}
-              <div className="w-full h-full bg-gradient-to-br from-leaf to-serene flex items-center justify-center">
-                <p className="text-white text-2xl font-serif">Ancient Tea Ceremony</p>
+              <source src="/videos/ritual-loop.mp4" type="video/mp4" />
+              {/* Fallback */}
+              <div className="w-full h-full bg-leaf flex items-center justify-center">
+                <span className="text-white/50 font-serif">Video not supported</span>
               </div>
             </video>
 

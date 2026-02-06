@@ -12,25 +12,18 @@ interface Promotion {
 
 const promotions: Promotion[] = [
   {
-    badge: 'Seasonal Harvest',
-    title: 'Buy 1 Get 1: The Refreshing Yuzu Blossom',
-    description: 'Experience the vitality of hand-picked Yuzu citrus blended with our premium green tea.',
-    validity: 'Offer valid until 28 Feb',
-    image: 'https://placehold.co/600x800/E6DC6B/ffffff?text=Yuzu+Blossom+Tea',
+    badge: 'HAPPY HOUR 14:00 - 16:00',
+    title: 'Afternoon Delight',
+    description: 'Special prices on tea! Collect 10 points via LINE OA to redeem 1 FREE cup immediately.',
+    validity: 'Daily 2 PM - 4 PM',
+    image: '/images/section/promotion2.webp',
   },
   {
-    badge: 'Exclusive Experience',
-    title: '20% Off: Afternoon Clay Pot Set',
-    description: 'Bring a friend and enjoy the full ceremonial brewing experience at a special price.',
-    validity: 'Weekdays 2 PM - 5 PM',
-    image: 'https://placehold.co/600x800/8EBDC3/ffffff?text=High+Tea+Set',
-  },
-  {
-    badge: 'Member Privilege',
-    title: 'Free Golden Bubble Topping',
-    description: 'Sign up as a WANGCHA member today and get free toppings on your first order.',
-    validity: 'For new registration only',
-    image: 'https://placehold.co/600x800/BCD188/ffffff?text=Member+Welcome',
+    badge: 'NEW EXPERIENCE',
+    title: 'Brew It Yourself',
+    description: 'Try our Hybrid Experience. Get 1 FREE Premium Topping for your first try. Post on TikTok/Reels for 10% OFF! #Wangchachacha',
+    validity: 'First-time experience only',
+    image: '/images/section/promotion1.webp',
   },
 ];
 
@@ -98,15 +91,15 @@ export const SeasonalSpecial = () => {
             variants={cardVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="relative bg-gradient-to-r from-white to-pollen/10 rounded-3xl overflow-hidden shadow-2xl flex-1 max-w-6xl"
+            className="relative bg-gradient-to-r from-white to-pollen/10 rounded-3xl overflow-hidden shadow-2xl flex-1 w-full max-w-6xl min-h-[500px] md:min-h-[550px]"
           >
             {/* Decorative Corner Element */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-pollen/20 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-serene/10 rounded-full blur-3xl" />
 
-            <div className="relative grid md:grid-cols-5 gap-8 items-center p-8 md:p-12">
-              {/* Left: Content (60%) */}
-              <div className="md:col-span-3 space-y-6 z-10">
+            <div className="relative flex flex-col md:flex-row gap-8 items-center p-8 md:p-12">
+              {/* Left: Content (50%) */}
+              <div className="w-full md:w-1/2 space-y-6 z-10">
                 <AnimatePresence mode="wait" custom={1}>
                   <motion.div
                     key={currentSlide}
@@ -127,7 +120,7 @@ export const SeasonalSpecial = () => {
                     </div>
 
                     {/* Headline */}
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-leaf leading-tight">
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-leaf leading-tight">
                       {currentPromotion.title.split(':')[0]}:
                       <br />
                       <span className="text-serene">{currentPromotion.title.split(':')[1]}</span>
@@ -147,8 +140,8 @@ export const SeasonalSpecial = () => {
                 </AnimatePresence>
               </div>
 
-              {/* Right: Image (40%) */}
-              <div className="md:col-span-2 relative">
+              {/* Right: Image (50%) */}
+              <div className="w-full md:w-1/2 relative">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentSlide}
@@ -156,7 +149,7 @@ export const SeasonalSpecial = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.5 }}
-                    className="relative rounded-2xl overflow-hidden shadow-2xl"
+                    className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] md:aspect-[4/5]"
                   >
                     <img
                       src={currentPromotion.image}
@@ -180,7 +173,7 @@ export const SeasonalSpecial = () => {
                   }}
                   className="absolute -top-4 -right-4 bg-leaf text-white px-6 py-3 rounded-full shadow-xl font-serif font-bold text-xl z-20"
                 >
-                  {currentSlide === 0 ? '1+1 Free' : currentSlide === 1 ? '20% Off' : 'Free Gift'}
+                  {currentSlide === 0 ? 'Free Cup' : '10% Off'}
                 </motion.div>
               </div>
             </div>

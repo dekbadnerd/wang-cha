@@ -37,9 +37,9 @@ export const BrandStory = () => {
         animate={isInView ? 'visible' : 'hidden'}
         className="container mx-auto px-6"
       >
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
           {/* Image */}
-          <motion.div variants={itemVariants} className="order-2 md:order-1">
+          <motion.div variants={itemVariants} className="w-full max-w-2xl lg:w-1/2 lg:order-1">
             <img
               src="/images/section/ritual-section.webp"
               alt="Ancient Clay Pot"
@@ -48,7 +48,7 @@ export const BrandStory = () => {
           </motion.div>
 
           {/* Text Content */}
-          <motion.div variants={itemVariants} className="order-1 md:order-2 space-y-6">
+          <motion.div variants={itemVariants} className="w-full max-w-2xl lg:w-1/2 lg:order-2 space-y-6 text-left">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-leaf">
               The Ancient Ritual
             </h2>
