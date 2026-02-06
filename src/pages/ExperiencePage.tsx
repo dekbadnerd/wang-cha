@@ -6,16 +6,21 @@ export const ExperiencePage = () => {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
+    // 1. ลบ pt-24 md:pt-28 ออกจากตรงนี้ (กล่องพ่อต้องคลีน)
     <div className="min-h-screen bg-mist">
+      
       {/* Desktop: Split Screen Layout */}
       <div className="flex flex-col md:flex-row">
+        
         {/* Left: Content */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, x: -30 }}
           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
           transition={{ duration: 0.8 }}
-          className="w-full md:w-1/2 flex items-center justify-center p-8 md:p-16 lg:p-24"
+          // 2. ย้าย Padding มาใส่ตรงนี้แทน! (เฉพาะ Text ที่ต้องหลบ Navbar)
+          // เพิ่ม pt-28 (Mobile) และ md:pt-32 (Desktop) ให้เนื้อหาไหลลงมาสวยๆ ไม่ชน Navbar
+          className="w-full md:w-1/2 flex items-center justify-center p-8 pt-28 md:p-16 md:pt-32 lg:p-24"
         >
           <div className="max-w-2xl space-y-8">
             <motion.div
@@ -80,6 +85,7 @@ export const ExperiencePage = () => {
         </motion.div>
 
         {/* Right: Video */}
+        {/* 3. ส่วนวิดีโอไม่ต้องมี Padding! ปล่อยให้มัน full height ชนขอบบนไปเลย */}
         <div className="w-full md:w-1/2 h-[50vh] md:h-screen md:sticky md:top-0">
           <div className="relative w-full h-full overflow-hidden">
             <video
@@ -88,7 +94,7 @@ export const ExperiencePage = () => {
               muted
               playsInline
               className="w-full h-full object-cover"
-              poster="/images/pages/ritual-poster.webp"
+              poster="/images/ritual-poster.webp"
             >
               <source src="/videos/ritual-loop.mp4" type="video/mp4" />
               {/* Fallback */}
